@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Piano Nutrizionale — Pier</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../resources/style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ── HEADER ── -->
+  <header>
+    <div class="badge">⚡ Piano Nutrizionale</div>
+    <h1>Dieta di <em>Pier</em></h1>
+    <p class="sub">5 pasti · scegli la fonte · supplementi inclusi</p>
+    <div class="date-chip">📅 Aggiornato: 2 Marzo 2026</div>
+  </header>
+
+  <!-- ── TOGGLE ON / OFF ── -->
+  <div class="toggle-wrap">
+    <div class="toggle-track" id="tt">
+      <div class="toggle-pill" id="tp"></div>
+      <button class="tbtn active" id="bOn"  onclick="sw('on')">🔥 Giorni ON</button>
+      <button class="tbtn"        id="bOff" onclick="sw('off')">🧘 Giorni OFF</button>
+    </div>
+  </div>
+
+  <!-- ── MACRO HERO ── -->
+  <div class="hero">
+    <div class="kcal-block">
+      <div class="kcal-num" id="kn">2680</div>
+      <div class="kcal-lbl">kcal totali / giorno</div>
+    </div>
+    <div class="mpills">
+      <div class="mp p">
+        <span class="mp-val"  id="pn">210</span>
+        <span class="mp-unit">grammi</span>
+        <span class="mp-name">Proteine</span>
+      </div>
+      <div class="mp c">
+        <span class="mp-val"  id="cn">310</span>
+        <span class="mp-unit">grammi</span>
+        <span class="mp-name">Carboidrati</span>
+      </div>
+      <div class="mp f">
+        <span class="mp-val"  id="fn">55</span>
+        <span class="mp-unit">grammi</span>
+        <span class="mp-name">Grassi</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       VIEWS CONTAINER (ON / OFF swap)
+  ══════════════════════════════════════════ -->
+  <div class="views-cont">
+
+    <!-- ════════ GIORNI ON ════════ -->
+    <div class="day-view visible" id="vOn">
+
+      <div class="sec-lbl">
+        <span class="sec-lbl-t">Piani Pasti — ON</span>
+        <div class="sec-lbl-l"></div>
+      </div>
+
+      <div class="premessa">
+        <strong>📌 Come usare:</strong> Scegli <strong>una</strong> fonte proteica,
+        <strong>una</strong> di carboidrati e <strong>una</strong> di grassi per ogni pasto.
+      </div>
+
+      <!-- COLAZIONE ON -->
+      <div class="meal">
+        <div class="meal-head" onclick="toggle(this.parentElement)">
+          <div class="meal-icon">🌅</div>
+          <div class="meal-info">
+            <div class="meal-name">Colazione</div>
+            <div class="meal-time">Mattina · appena sveglio</div>
+          </div>
+          <div class="meal-kcal">
+            <div class="meal-kcal-n">~520</div>
+            <div class="meal-kcal-l">kcal</div>
+          </div>
+          <div class="chevron">›</div>
+        </div>
+        <div class="meal-body"><div class="meal-inner">
+          <div class="mrow prot">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Proteine — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span>250 ml albume</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span>200 ml latte scremato / mandorla / soia + 30 gr proteine isolate</div>
+            </div>
+          </div>
+          <div class="mrow carb">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Carboidrati — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span><strong>60 gr</strong> farina d'avena + 10 gr cornflakes</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span><strong>60 gr</strong> cornflakes</div>
+            </div>
+          </div>
+          <div class="mrow fat">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Grassi — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span>30 gr burro di arachidi</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span>30 gr altra crema spalmabile</div>
+              <div class="mrow-item"><span class="mrow-item-n">③</span>30 gr frutta secca</div>
+              <div class="mrow-item"><span class="mrow-item-n">④</span>15 gr olio</div>
+            </div>
+          </div>
+          <div class="note-box">💡 Puoi aggiungere <strong>30–40 gr di marmellata Hero Light</strong></div>
+          <div class="supp-box">💊 <strong>Con la colazione:</strong> 1 Multivitaminico · 2 Omega-3 · 1 Vit C · 30 mg Zinco · 50 mg Vit D · 300 mg ALA</div>
+        </div></div>
+      </div>
+
+      <!-- SPUNTINO ON -->
+      <div class="meal">
+        <div class="meal-head" onclick="toggle(this.parentElement)">
+          <div class="meal-icon">🍎</div>
+          <div class="meal-info">
+            <div class="meal-name">Spuntino Mattina</div>
+            <div class="meal-time">Metà mattinata</div>
+          </div>
+          <div class="meal-kcal">
+            <div class="meal-kcal-n">~370</div>
+            <div class="meal-kcal-l">kcal</div>
+          </div>
+          <div class="chevron">›</div>
+        </div>
+        <div class="meal-body"><div class="meal-inner">
+          <div class="mrow prot">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Proteine — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span>150 gr petto di pollo / tacchino / fesa / bresaola / prosciutto crudo sgrassato / tonno al naturale in vetro</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span>300 gr yogurt Fage 0% grassi</div>
+              <div class="mrow-item"><span class="mrow-item-n">③</span>35 gr proteine Whey o Isolate</div>
+              <div class="mrow-item"><span class="mrow-item-n">④</span>300 ml albume</div>
+            </div>
+          </div>
+          <div class="mrow carb">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Carboidrati — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span>50 gr gallette</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span>75 gr pane di segale o integrale</div>
+              <div class="mrow-item"><span class="mrow-item-n">③</span>50 gr crema di riso o farina di riso</div>
+              <div class="mrow-item"><span class="mrow-item-n">④</span>60 gr farina d'avena</div>
+            </div>
+          </div>
+          <div class="mrow fat">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Grassi — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span>20 gr frutta secca</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span>10 gr olio</div>
+              <div class="mrow-item"><span class="mrow-item-n">③</span>20 gr burro di arachidi</div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- PRANZO ON -->
+      <div class="meal">
+        <div class="meal-head" onclick="toggle(this.parentElement)">
+          <div class="meal-icon">🍽️</div>
+          <div class="meal-info">
+            <div class="meal-name">Pranzo</div>
+            <div class="meal-time">Mezzogiorno</div>
+          </div>
+          <div class="meal-kcal">
+            <div class="meal-kcal-n">~700</div>
+            <div class="meal-kcal-l">kcal</div>
+          </div>
+          <div class="chevron">›</div>
+        </div>
+        <div class="meal-body"><div class="meal-inner">
+          <div class="mrow prot">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Proteine — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span>150 gr petto di pollo o tacchino</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span>200 gr pesce magro (merluzzo, spigola, orata, sogliola o gamberetti)</div>
+              <div class="mrow-item"><span class="mrow-item-n">③</span>150 gr carne rossa magra</div>
+            </div>
+          </div>
+          <div class="mrow carb">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Carboidrati — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span><strong>80 gr</strong> riso o pasta</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span><strong>120 gr</strong> pane di segale o integrale</div>
+              <div class="mrow-item"><span class="mrow-item-n">③</span><strong>80 gr</strong> gallette</div>
+              <div class="mrow-item"><span class="mrow-item-n">④</span><strong>320 gr</strong> patate o patate dolci bollite / al forno — olio sempre a crudo</div>
+              <div class="mrow-item"><span class="mrow-item-n">⑤</span><strong>200 gr</strong> gnocchi di patate</div>
+            </div>
+          </div>
+          <div class="mrow fat">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Grassi</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">→</span>10 gr olio</div>
+            </div>
+          </div>
+          <div class="note-box">
+            💡 Per ogni <strong>100 gr legumi cotti</strong> (piselli, lenticchie, fagioli, ceci):
+            togli <strong>10 gr riso/pasta</strong> + <strong>25 gr pollo</strong><br>
+            🍅 Puoi aggiungere <strong>100–150 gr polpa di pomodoro</strong> + <strong>100 gr verdura</strong> a scelta
+          </div>
+          <div class="ala-badge">⚗️ 600 mg ALA dopo il pasto</div>
+        </div></div>
+      </div>
+
+      <!-- SPUNTINO POST-WORKOUT ON -->
+      <div class="meal">
+        <div class="meal-head" onclick="toggle(this.parentElement)">
+          <div class="meal-icon">💪</div>
+          <div class="meal-info">
+            <div class="meal-name">Spuntino Post-Workout</div>
+            <div class="meal-time">Subito dopo l'allenamento</div>
+          </div>
+          <div class="meal-kcal">
+            <div class="meal-kcal-n">~490</div>
+            <div class="meal-kcal-l">kcal</div>
+          </div>
+          <div class="chevron">›</div>
+        </div>
+        <div class="meal-body"><div class="meal-inner">
+          <div class="mrow prot">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Proteine — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span>150 gr petto di pollo / tacchino / fesa / bresaola / prosciutto crudo sgrassato / tonno al naturale in vetro</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span>300 gr yogurt Fage 0% grassi</div>
+              <div class="mrow-item"><span class="mrow-item-n">③</span>35 gr proteine Whey o Isolate</div>
+              <div class="mrow-item"><span class="mrow-item-n">④</span>300 ml albume</div>
+            </div>
+          </div>
+          <div class="mrow carb">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Carboidrati — scegli 1 <span style="font-weight:400;opacity:.7">(+ miele)</span></span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span>120 gr gallette + 10 gr miele</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span>120 gr cornflakes + 10 gr miele</div>
+              <div class="mrow-item"><span class="mrow-item-n">③</span>120 gr crema di riso / farina di riso + 10 gr miele</div>
+              <div class="mrow-item"><span class="mrow-item-n">④</span>120 gr riso + 10 gr miele</div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- CENA ON -->
+      <div class="meal">
+        <div class="meal-head" onclick="toggle(this.parentElement)">
+          <div class="meal-icon">🌙</div>
+          <div class="meal-info">
+            <div class="meal-name">Cena</div>
+            <div class="meal-time">Sera</div>
+          </div>
+          <div class="meal-kcal">
+            <div class="meal-kcal-n">~600</div>
+            <div class="meal-kcal-l">kcal</div>
+          </div>
+          <div class="chevron">›</div>
+        </div>
+        <div class="meal-body"><div class="meal-inner">
+          <div class="mrow prot">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Proteine — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span>150 gr petto di pollo o tacchino</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span>200 gr pesce magro (merluzzo, spigola, orata, sogliola o gamberetti)</div>
+              <div class="mrow-item"><span class="mrow-item-n">③</span>150 gr carne rossa magra</div>
+            </div>
+          </div>
+          <div class="mrow carb">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Carboidrati — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span>100 gr riso o pasta</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span>150 gr pane di segale o integrale</div>
+              <div class="mrow-item"><span class="mrow-item-n">③</span>100 gr gallette</div>
+              <div class="mrow-item"><span class="mrow-item-n">④</span>400 gr patate o patate dolci — olio sempre a crudo</div>
+              <div class="mrow-item"><span class="mrow-item-n">⑤</span>250 gr gnocchi di patate</div>
+            </div>
+          </div>
+          <div class="mrow fat">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Grassi</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">→</span>10 gr olio</div>
+            </div>
+          </div>
+          <div class="note-box">
+            💡 Per ogni <strong>100 gr legumi cotti</strong>: togli <strong>10 gr riso/pasta</strong> + <strong>25 gr pollo</strong><br>
+            🍅 Puoi aggiungere <strong>100–150 gr polpa di pomodoro</strong> + <strong>100 gr verdura</strong> a scelta
+          </div>
+          <div class="ala-badge">⚗️ 600 mg ALA dopo il pasto</div>
+        </div></div>
+      </div>
+
+    </div><!-- /vOn -->
+
+    <!-- ════════ GIORNI OFF ════════ -->
+    <div class="day-view hidden" id="vOff">
+
+      <div class="sec-lbl">
+        <span class="sec-lbl-t">Piani Pasti — OFF</span>
+        <div class="sec-lbl-l"></div>
+      </div>
+
+      <div class="premessa">
+        <strong>📌 Come usare:</strong> Scegli <strong>una</strong> fonte proteica,
+        <strong>una</strong> di carboidrati e <strong>una</strong> di grassi per ogni pasto.
+        Carbo e calorie ridotti rispetto ai giorni ON.
+      </div>
+
+      <!-- COLAZIONE OFF -->
+      <div class="meal">
+        <div class="meal-head" onclick="toggle(this.parentElement)">
+          <div class="meal-icon">🌅</div>
+          <div class="meal-info">
+            <div class="meal-name">Colazione</div>
+            <div class="meal-time">Mattina · appena sveglio</div>
+          </div>
+          <div class="meal-kcal">
+            <div class="meal-kcal-n">~490</div>
+            <div class="meal-kcal-l">kcal</div>
+          </div>
+          <div class="chevron">›</div>
+        </div>
+        <div class="meal-body"><div class="meal-inner">
+          <div class="mrow prot">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Proteine — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span>250 ml albume</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span>200 ml latte scremato / mandorla / soia + <strong>20 gr</strong> proteine isolate</div>
+            </div>
+          </div>
+          <div class="mrow carb">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Carboidrati — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span><strong>50 gr</strong> farina d'avena + <strong>20 gr</strong> cornflakes</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span><strong>60 gr</strong> cornflakes</div>
+            </div>
+          </div>
+          <div class="mrow fat">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Grassi — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span>30 gr burro di arachidi</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span>30 gr altra crema spalmabile</div>
+              <div class="mrow-item"><span class="mrow-item-n">③</span>30 gr frutta secca</div>
+              <div class="mrow-item"><span class="mrow-item-n">④</span>15 gr olio</div>
+            </div>
+          </div>
+          <div class="note-box">💡 Puoi aggiungere <strong>30–40 gr di marmellata Hero Light</strong></div>
+          <div class="supp-box">💊 <strong>Con la colazione:</strong> 1 Multivitaminico · 2 Omega-3 · 1 Vit C · 30 mg Zinco · 50 mg Vit D · 300 mg ALA</div>
+        </div></div>
+      </div>
+
+      <!-- SPUNTINO OFF -->
+      <div class="meal">
+        <div class="meal-head" onclick="toggle(this.parentElement)">
+          <div class="meal-icon">🍎</div>
+          <div class="meal-info">
+            <div class="meal-name">Spuntino Mattina</div>
+            <div class="meal-time">Metà mattinata</div>
+          </div>
+          <div class="meal-kcal">
+            <div class="meal-kcal-n">~370</div>
+            <div class="meal-kcal-l">kcal</div>
+          </div>
+          <div class="chevron">›</div>
+        </div>
+        <div class="meal-body"><div class="meal-inner">
+          <div class="mrow prot">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Proteine — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span>150 gr petto di pollo / tacchino / fesa / bresaola / prosciutto crudo sgrassato / tonno al naturale in vetro</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span>300 gr yogurt Fage 0% grassi</div>
+              <div class="mrow-item"><span class="mrow-item-n">③</span>35 gr proteine Whey o Isolate</div>
+              <div class="mrow-item"><span class="mrow-item-n">④</span>300 ml albume</div>
+            </div>
+          </div>
+          <div class="mrow carb">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Carboidrati — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span>50 gr gallette</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span>75 gr pane di segale o integrale</div>
+              <div class="mrow-item"><span class="mrow-item-n">③</span>50 gr crema di riso o farina di riso</div>
+              <div class="mrow-item"><span class="mrow-item-n">④</span>60 gr farina d'avena</div>
+            </div>
+          </div>
+          <div class="mrow fat">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Grassi — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span>20 gr frutta secca</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span>10 gr olio</div>
+              <div class="mrow-item"><span class="mrow-item-n">③</span>20 gr burro di arachidi</div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- PRANZO OFF -->
+      <div class="meal">
+        <div class="meal-head" onclick="toggle(this.parentElement)">
+          <div class="meal-icon">🍽️</div>
+          <div class="meal-info">
+            <div class="meal-name">Pranzo</div>
+            <div class="meal-time">Mezzogiorno</div>
+          </div>
+          <div class="meal-kcal">
+            <div class="meal-kcal-n">~700</div>
+            <div class="meal-kcal-l">kcal</div>
+          </div>
+          <div class="chevron">›</div>
+        </div>
+        <div class="meal-body"><div class="meal-inner">
+          <div class="mrow prot">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Proteine — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span>150 gr petto di pollo o tacchino</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span>200 gr pesce magro (merluzzo, spigola, orata, sogliola o gamberetti)</div>
+              <div class="mrow-item"><span class="mrow-item-n">③</span>150 gr carne rossa magra</div>
+            </div>
+          </div>
+          <div class="mrow carb">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Carboidrati — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span>80 gr riso o pasta</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span>120 gr pane di segale o integrale</div>
+              <div class="mrow-item"><span class="mrow-item-n">③</span>80 gr gallette</div>
+              <div class="mrow-item"><span class="mrow-item-n">④</span>320 gr patate o patate dolci — olio sempre a crudo</div>
+              <div class="mrow-item"><span class="mrow-item-n">⑤</span>200 gr gnocchi di patate</div>
+            </div>
+          </div>
+          <div class="mrow fat">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Grassi</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">→</span>10 gr olio</div>
+            </div>
+          </div>
+          <div class="note-box">
+            💡 Per ogni <strong>100 gr legumi cotti</strong>: togli <strong>10 gr riso/pasta</strong> + <strong>25 gr pollo</strong><br>
+            🍅 Puoi aggiungere <strong>100–150 gr polpa di pomodoro</strong> + <strong>100 gr verdura</strong> a scelta
+          </div>
+          <div class="ala-badge">⚗️ 600 mg ALA dopo il pasto</div>
+        </div></div>
+      </div>
+
+      <!-- SPUNTINO POMERIGGIO OFF -->
+      <div class="meal">
+        <div class="meal-head" onclick="toggle(this.parentElement)">
+          <div class="meal-icon">☀️</div>
+          <div class="meal-info">
+            <div class="meal-name">Spuntino Pomeriggio</div>
+            <div class="meal-time">Ore 15:30 – 16:00</div>
+          </div>
+          <div class="meal-kcal">
+            <div class="meal-kcal-n">~370</div>
+            <div class="meal-kcal-l">kcal</div>
+          </div>
+          <div class="chevron">›</div>
+        </div>
+        <div class="meal-body"><div class="meal-inner">
+          <div class="mrow prot">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Proteine — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span>150 gr petto di pollo / tacchino / fesa / bresaola / prosciutto crudo sgrassato / tonno al naturale in vetro</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span>300 gr yogurt Fage 0% grassi</div>
+              <div class="mrow-item"><span class="mrow-item-n">③</span>35 gr proteine Whey o Isolate</div>
+              <div class="mrow-item"><span class="mrow-item-n">④</span>300 ml albume</div>
+            </div>
+          </div>
+          <div class="mrow carb">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Carboidrati — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span>50 gr gallette</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span>75 gr pane di segale o integrale</div>
+              <div class="mrow-item"><span class="mrow-item-n">③</span>50 gr crema di riso o farina di riso</div>
+              <div class="mrow-item"><span class="mrow-item-n">④</span>60 gr farina d'avena</div>
+            </div>
+          </div>
+          <div class="mrow fat">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Grassi — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span>20 gr frutta secca</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span>10 gr olio</div>
+              <div class="mrow-item"><span class="mrow-item-n">③</span>20 gr burro di arachidi</div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- CENA OFF -->
+      <div class="meal">
+        <div class="meal-head" onclick="toggle(this.parentElement)">
+          <div class="meal-icon">🌙</div>
+          <div class="meal-info">
+            <div class="meal-name">Cena</div>
+            <div class="meal-time">Sera</div>
+          </div>
+          <div class="meal-kcal">
+            <div class="meal-kcal-n">~670</div>
+            <div class="meal-kcal-l">kcal</div>
+          </div>
+          <div class="chevron">›</div>
+        </div>
+        <div class="meal-body"><div class="meal-inner">
+          <div class="mrow prot">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Proteine — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span>150 gr petto di pollo o tacchino</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span>200 gr pesce magro (merluzzo, spigola, orata, sogliola o gamberetti)</div>
+              <div class="mrow-item"><span class="mrow-item-n">③</span>150 gr carne rossa magra</div>
+            </div>
+          </div>
+          <div class="mrow carb">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Carboidrati — scegli 1</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">①</span>80 gr riso o pasta</div>
+              <div class="mrow-item"><span class="mrow-item-n">②</span>120 gr pane di segale o integrale</div>
+              <div class="mrow-item"><span class="mrow-item-n">③</span>80 gr gallette</div>
+              <div class="mrow-item"><span class="mrow-item-n">④</span>320 gr patate o patate dolci — olio sempre a crudo</div>
+              <div class="mrow-item"><span class="mrow-item-n">⑤</span>200 gr gnocchi di patate</div>
+            </div>
+          </div>
+          <div class="mrow fat">
+            <div class="mrow-head"><div class="mrow-dot"></div><span class="mrow-title">Grassi</span></div>
+            <div class="mrow-items">
+              <div class="mrow-item"><span class="mrow-item-n">→</span>10 gr olio</div>
+            </div>
+          </div>
+          <div class="note-box">
+            💡 Per ogni <strong>100 gr legumi cotti</strong>: togli <strong>10 gr riso/pasta</strong> + <strong>25 gr pollo</strong><br>
+            🍅 Puoi aggiungere <strong>100–150 gr polpa di pomodoro</strong> + <strong>100 gr verdura</strong> a scelta
+          </div>
+          <div class="ala-badge">⚗️ 600 mg ALA dopo il pasto</div>
+        </div></div>
+      </div>
+
+    </div><!-- /vOff -->
+
+  </div><!-- /views-cont -->
+
+  <!-- ── SUPPLEMENTI ── -->
+  <div class="sec-lbl">
+    <span class="sec-lbl-t">Supplementi</span>
+    <div class="sec-lbl-l"></div>
+  </div>
+  <div class="supp-card">
+    <div class="supp-card-title">💊 Stack Giornaliero</div>
+    <div class="supp-grid">
+      <div class="si">
+        <div class="si-icon">🌈</div>
+        <div><div class="si-name">Multivitaminico</div><div class="si-dose">1 cpr · con colazione</div></div>
+      </div>
+      <div class="si">
+        <div class="si-icon">🐟</div>
+        <div><div class="si-name">Omega-3</div><div class="si-dose">2 capsule · con colazione</div></div>
+      </div>
+      <div class="si">
+        <div class="si-icon">🍊</div>
+        <div><div class="si-name">Vitamina C</div><div class="si-dose">1 cpr · con colazione</div></div>
+      </div>
+      <div class="si">
+        <div class="si-icon">⚗️</div>
+        <div><div class="si-name">Zinco</div><div class="si-dose">30 mg · con colazione</div></div>
+      </div>
+      <div class="si">
+        <div class="si-icon">☀️</div>
+        <div><div class="si-name">Vitamina D</div><div class="si-dose">50 mg · con colazione</div></div>
+      </div>
+      <div class="si">
+        <div class="si-icon">🔬</div>
+        <div><div class="si-name">ALA — Colazione</div><div class="si-dose">300 mg · con colazione</div></div>
+      </div>
+      <div class="si si-full">
+        <div class="si-icon">⚡</div>
+        <div>
+          <div class="si-name">ALA — Pranzo + Cena</div>
+          <div class="si-dose">600 mg dopo pranzo · 600 mg dopo cena → Totale: 1500 mg ALA / die</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── REGOLE GENERALI ── -->
+  <div class="sec-lbl">
+    <span class="sec-lbl-t">Note del Nutrizionista</span>
+    <div class="sec-lbl-l"></div>
+  </div>
+  <div class="rules-card">
+    <div class="rule">
+      <div class="rule-ico">💧</div>
+      <div class="rule-txt"><strong>3 litri di acqua al giorno</strong>, possibilmente naturale e con basso residuo fisso.</div>
+    </div>
+    <div class="rule">
+      <div class="rule-ico">🧂</div>
+      <div class="rule-txt"><strong>Non esagerare con il sale.</strong></div>
+    </div>
+    <div class="rule">
+      <div class="rule-ico">🍬</div>
+      <div class="rule-txt"><strong>Usa dolcificanti, non zucchero.</strong> Puoi usare Bolero o bevande a zero zuccheri.</div>
+    </div>
+    <div class="rule">
+      <div class="rule-ico">🍕</div>
+      <div class="rule-txt"><strong>1 pasto libero ogni 7 giorni.</strong></div>
+    </div>
+  </div>
+
+</div><!-- /wrap -->
+
+<script src="../resources/main.js"></script>
+</body>
+</html>
